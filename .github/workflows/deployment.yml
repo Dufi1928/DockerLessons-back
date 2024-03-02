@@ -39,8 +39,8 @@ jobs:
                     username: ${{ secrets.USERNAME }}
                     key: ${{ secrets.SSH_KEY }}
                     script: |
-                        docker pull yourusername/your-django-app:latest
+                        docker pull dufi1928/django-back
                         docker stop django-container || true
                         docker rm django-container || true
-                        docker run -d --name django-container -p 80:8000 yourusername/your-django-app:latest
+                        docker run -d --name django-container -p 80:8000 dufi1928/django-back:latest
                         docker exec django-container python manage.py migrate
