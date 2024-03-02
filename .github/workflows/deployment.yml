@@ -35,7 +35,7 @@ jobs:
             -   name: Deploy to server and run migrations
                 uses: appleboy/ssh-action@master
                 with:
-                    host: ${{ secrets.MANAGER }}
+                    host: ${{ secrets.HOST }}
                     username: ${{ secrets.USERNAME }}
                     key: ${{ secrets.SSH_KEY }}
                     script: |
