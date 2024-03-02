@@ -34,13 +34,12 @@ jobs:
         steps:
             -   name: Deploy to server and run migrations
                 uses: appleboy/ssh-action@master
-                with:
-                    host: ${{ secrets.HOST }}
-                    username: ${{ secrets.USERNAME }}
-                    key: ${{ secrets.SSH_KEY }}
-                    script: |
-                        docker pull dufi1928/django-back
-                        docker stop django-container || true
-                        docker rm django-container || true
-                        docker run -d --name django-container -p 80:8000 dufi1928/django-back:latest
-                        docker exec django-container python manage.py migrate
+                host: ${{ secrets.HOST }}
+                username: ${{ secrets.USERNAME }}
+                key: ${{ secrets.SSH_KEY }}
+                script: |
+                    docker service create --image dufi1928/django-back:latest django-service
+                    sleep 10
+                    TASK_ID=$(docker service ps --filter 'desired-state=running' django-service -q --no-trunc | head -n1)
+                    CONTAINER_ID=$(docker inspect --format '{{.Status.ContainerStatus.ContainerID}}' $TASK_ID)
+                    docker exec $CONTAINER_ID python manage.py migrate
