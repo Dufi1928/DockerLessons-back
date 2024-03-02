@@ -1,22 +1,27 @@
 version: '3.8'
 services:
-    db:
-        image: postgres:13
+    django:
+        build:
+            context: ./RevisionZenBackend
+        container_name: backend
+        command: uvicorn RevisionZenBackend.asgi:application --host 0.0.0.0 --port 8000
         volumes:
-            - postgres_data:/var/lib/postgresql/data
-        environment:
-            POSTGRES_DB: ${DATABASE_NAME}
-            POSTGRES_USER: ${DATABASE_USER}
-            POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
-    web:
-        build: .
-        volumes:
-            - .:/code
+            - ./RevisionZenBackend:/app
         ports:
             - "8000:8000"
-        environment:
-            - DATABASE_HOST=db
-            - DATABASE_PORT=${DATABASE_PORT}
         depends_on:
-            - db
-        command: ["./entrypoint.sh"]
+            - pgdb
+    pgdb:
+        image: postgres
+        restart: always
+        environment:
+            POSTGRES_DB: revisionzen
+            POSTGRES_USER: ivan
+            POSTGRES_PASSWORD: 040998Ih@
+        container_name: pgdb
+        volumes:
+            - pgdbdata:/var/lib/postgrsql/data
+        ports:
+            - "5432:5432"
+volumes:
+    pgdbdata: null
