@@ -35,9 +35,9 @@ jobs:
             -   name: Deploy to server and run migrations
                 uses: appleboy/ssh-action@master
                 with:
-                    host: ${{ secrets.HOST_MANAGER }}
-                    username: ${{ secrets.MANA_USERNAME }}
-                    key: ${{ secrets.MANA_SSH }}
+                    host: ${{ secrets.MANAGER }}
+                    username: ${{ secrets.USERNAME }}
+                    key: ${{ secrets.SSH_KEY }}
                     script: |
                         SERVICE_NAME=django-service
                         IMAGE_NAME=dufi1928/django-back:latest
