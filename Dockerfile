@@ -15,4 +15,4 @@ COPY . .
 EXPOSE 8000
 
 # Utiliser Gunicorn pour lancer l'application
-CMD ["gunicorn", "--workers=3", "--bind=0.0.0.0:8000", "mysite.wsgi:application"]
+CMD ["uvicorn", "RevisionZenBackend.asgi:application", "--host", "0.0.0.0", "--port", "8000"]
