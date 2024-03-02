@@ -19,27 +19,10 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'default-secret-key')
 
 
 
-CORS_ALLOWED_ORIGINS = [
-    "https://revisionzen.com",
-    "https://revisionzen.fr",
-    "https://localhost:*",
-    "https://localhost:3000",
-    "*",
-]
+CORS_ALLOWED_ORIGINS = ["*"]
 CORS_ALLOW_ALL_ORIGINS = True
 
-CORS_ORIGIN_WHITELIST = [
-    'https://revisionzen.com:433',
-    'https://revisionzen.fr:433',
-    'http://revisionzen.fr:80',
-    'http://revisionzen.com:80',
-    'http://localhost:3000',
-    'https://revisionzen.com:5173',
-    'http://revisionzen.com:5173',
-    'https://revisionzen.fr:5173',
-    'http://revisionzen.fr:5173',
-]
-
+CORS_ORIGIN_WHITELIST = []
 
 INSTALLED_APPS = [
     'Authentification',
