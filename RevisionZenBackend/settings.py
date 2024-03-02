@@ -24,6 +24,7 @@ CORS_ALLOWED_ORIGINS = [
     "https://revisionzen.fr",
     "https://localhost:*",
     "https://localhost:3000",
+    "*"
 ]
 CORS_ALLOW_ALL_ORIGINS = True
 
