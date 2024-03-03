@@ -4,11 +4,11 @@ services:
         build:
             context: ./RevisionZenBackend
         container_name: backend
-        command: uvicorn RevisionZenBackend.asgi:application --host 0.0.0.0 --port 8000
+        command: uvicorn RevisionZenBackend.asgi:application --host 0.0.0.0 --port 8080
         volumes:
             - ./RevisionZenBackend:/app
         ports:
-            - "8000:8000"
+            - "8080:8080"
         depends_on:
             - pgdb
     pgdb:

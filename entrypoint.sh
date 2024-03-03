@@ -9,4 +9,4 @@ done
 python manage.py migrate --noinput
 
 # Démarrer Gunicorn avec l'application Django
-gunicorn --workers=3 --bind=0.0.0.0:8000 myproject.wsgi:application
+gunicorn --workers=3 --bind=0.0.0.0:8080 myproject.wsgi:application
