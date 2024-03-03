@@ -60,10 +60,11 @@ jobs:
                         if [ -z "$DJANGO_SERVICE_EXISTS" ]; then
                             echo "Creating Django service $DJANGO_SERVICE_NAME"
                             docker service create --name $DJANGO_SERVICE_NAME --replicas 1 --publish published=8080,target=8080 $DJANGO_IMAGE_NAME
+                            echo "Running Django migrations"
+                            docker run --rm --network container:$DJANGO_SERVICE_NAME $DJANGO_IMAGE_NAME python manage.py migrate
                         else
                             echo "Updating Django service $DJANGO_SERVICE_NAME"
                             docker service update --image $DJANGO_IMAGE_NAME --replicas 2 $DJANGO_SERVICE_NAME
                         fi
-
                         
                         
