@@ -12,7 +12,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Exposer le port sur lequel Gunicorn va s'exécuter
-EXPOSE 8080
+EXPOSE 8000
 
 # Utiliser Gunicorn pour lancer l'application
-CMD ["uvicorn", "RevisionZenBackend.asgi:application", "--host", "0.0.0.0", "--port", "8080"]
+CMD ["uvicorn", "RevisionZenBackend.asgi:application", "--host", "0.0.0.0", "--port", "8000"]

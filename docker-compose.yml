@@ -8,11 +8,11 @@ services:
         volumes:
             - ./RevisionZenBackend:/app
         ports:
-            - "8080:8080"
+            - "8000:8000"
         depends_on:
             - pgdb
         environment:
-            DATABASE_HOST: http://194.163.142.148
+            DATABASE_HOST: 194.163.142.148
             DATABASE_NAME: revisionzen
             DATABASE_USER: ivan
             DATABASE_PASSWORD: 040998Ih@
