@@ -75,15 +75,12 @@ TEMPLATES = [
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ.get('DATABASE_NAME', 'default_db_name'),
-        'USER': os.environ.get('DATABASE_USER', 'default_user'),
-        'PASSWORD': os.environ.get('DATABASE_PASSWORD', 'default_password'),
-        'HOST': os.environ.get('DATABASE_HOST', 'localhost'),
-        'PORT': os.environ.get('DATABASE_PORT', '5432'),
-        'TEST': {
-            'NAME': 'test_gameon',
-        },
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv('DATABASE_NAME', 'revisionzen'),  # Nom de la base de données
+        'USER': os.getenv('DATABASE_USER', 'ivan'),  # Utilisateur de la base de données
+        'PASSWORD': os.getenv('DATABASE_PASSWORD', '040998Ih@'),  # Mot de passe de l'utilisateur
+        'HOST': os.getenv('DATABASE_HOST', 'pgdb'),  # Nom du service Docker pour PostgreSQL
+        'PORT': os.getenv('DATABASE_PORT', 5432),  # Port par défaut de PostgreSQL
     }
 }
 
