@@ -11,17 +11,19 @@ services:
             - "8080:8080"
         depends_on:
             - pgdb
+        environment:
+            DATABASE_HOST: pgdb
+            DATABASE_NAME: revisionzen
+            DATABASE_USER: ivan
+            DATABASE_PASSWORD: 040998Ih@
+            DATABASE_PORT: 5432
     pgdb:
         image: postgres
-        restart: always
         environment:
             POSTGRES_DB: revisionzen
             POSTGRES_USER: ivan
             POSTGRES_PASSWORD: 040998Ih@
-        container_name: pgdb
         volumes:
-            - pgdbdata:/var/lib/postgrsql/data
-        ports:
-            - "5432:5432"
+            - pgdbdata:/var/lib/postgresql/data
 volumes:
-    pgdbdata: null
+    pgdbdata:
