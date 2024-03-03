@@ -79,7 +79,7 @@ DATABASES = {
         'NAME': os.getenv('DATABASE_NAME', 'revisionzen'),  # Nom de la base de données
         'USER': os.getenv('DATABASE_USER', 'ivan'),  # Utilisateur de la base de données
         'PASSWORD': os.getenv('DATABASE_PASSWORD', '040998Ih@'),  # Mot de passe de l'utilisateur
-        'HOST': os.getenv('DATABASE_HOST', 'http://194.163.142.148'),  # Nom du service Docker pour PostgreSQL
+        'HOST': os.getenv('DATABASE_HOST', '194.163.142.148'),  # Nom du service Docker pour PostgreSQL
         'PORT': os.getenv('DATABASE_PORT', 5432),  # Port par défaut de PostgreSQL
     }
 }
