@@ -64,8 +64,6 @@ jobs:
                             echo "Updating Django service $DJANGO_SERVICE_NAME"
                             docker service update --image $DJANGO_IMAGE_NAME --replicas 2 $DJANGO_SERVICE_NAME
                         fi
-                        
-                            echo "Running Django migrations"
-                            docker run --rm --network container:$DJANGO_SERVICE_NAME $DJANGO_IMAGE_NAME python manage.py migrate
-                        
+                            cho "Running Django migrations"
+                            docker exec $(docker ps -qf "name=$DJANGO_SERVICE_NAME") python manage.py migrate
                         
