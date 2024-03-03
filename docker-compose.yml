@@ -12,7 +12,7 @@ services:
         depends_on:
             - pgdb
         environment:
-            DATABASE_HOST: pgdb
+            DATABASE_HOST: http://194.163.142.148
             DATABASE_NAME: revisionzen
             DATABASE_USER: ivan
             DATABASE_PASSWORD: 040998Ih@
