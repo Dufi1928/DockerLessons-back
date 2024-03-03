@@ -44,22 +44,24 @@ jobs:
                         DJANGO_IMAGE_NAME=dufi1928/django-back:latest
                         DJANGO_SERVICE_EXISTS=$(docker service ls | grep $DJANGO_SERVICE_NAME || true)
                         if [ -z "$DJANGO_SERVICE_EXISTS" ]; then
-                            echo "Creating Django service $DJANGO_SERVICE_NAME"
-                            docker service create --name $DJANGO_SERVICE_NAME --replicas 1 --publish published=8080,target=8080 $DJANGO_IMAGE_NAME
+                        echo "Creating Django service $DJANGO_SERVICE_NAME"
+                        docker service create --name $DJANGO_SERVICE_NAME --replicas 1 --publish published=8080,target=8080 $DJANGO_IMAGE_NAME
                         else
-                            echo "Updating Django service $DJANGO_SERVICE_NAME"
-                            docker service update --image $DJANGO_IMAGE_NAME --replicas 2 $DJANGO_SERVICE_NAME
-                        
-                        # Deploy PostgreSQL Service
+                        echo "Updating Django service $DJANGO_SERVICE_NAME"
+                        docker service update --image $DJANGO_IMAGE_NAME --replicas 2 $DJANGO_SERVICE_NAME
+                        fi
+                      
+                      # Deploy PostgreSQL Service
                         PG_SERVICE_NAME=pgdb
                         PG_IMAGE_NAME=postgres:latest # Utilisez l'image officielle de PostgreSQL
                         PG_SERVICE_EXISTS=$(docker service ls | grep $PG_SERVICE_NAME || true)
                         if [ -z "$PG_SERVICE_EXISTS" ]; then
-                            echo "Creating PostgreSQL service $PG_SERVICE_NAME"
-                            docker service create --name $PG_SERVICE_NAME --replicas 1 \
-                            --env POSTGRES_DB=revisionzen \
-                            --env POSTGRES_USER=ivan \
-                            --env POSTGRES_PASSWORD=040998Ih@ \
-                            --publish published=5432,target=5432 $PG_IMAGE_NAME
+                        echo "Creating PostgreSQL service $PG_SERVICE_NAME"
+                        docker service create --name $PG_SERVICE_NAME --replicas 1 \
+                        --env POSTGRES_DB=revisionzen \
+                        --env POSTGRES_USER=ivan \
+                        --env POSTGRES_PASSWORD=040998Ih@ \
+                        --publish published=5432,target=5432 $PG_IMAGE_NAME
                         else
-                            echo "PostgreSQL service $PG_SERVICE_NAME already exists"
+                        echo "PostgreSQL service $PG_SERVICE_NAME already exists"
+                        fi
