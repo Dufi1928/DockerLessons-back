@@ -25,6 +25,5 @@ services:
             DATABASE_USER: ivan
             DATABASE_PASSWORD: 040998Ih@
             DATABASE_PORT: 5432
-
 volumes:
     pgdbdata:

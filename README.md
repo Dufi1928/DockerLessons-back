@@ -5,7 +5,7 @@
 
 
 
-A lancer pour activer le venv source revisonzenenv/Scripts/activate
+A lancer pour activer le venv source revissonzenenv/Scripts/activate
 
 depuis
  /d/Revisionzen/RevisionZenBackend
